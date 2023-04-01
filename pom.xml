@@ -16,9 +16,9 @@
 
     <distributionManagement>
         <repository>
-        <id>github</id>
-        <name>GitHub Packages</name>
-        <url>https://maven.pkg.github.com/boris-ning-usds/phinvad-client</url>
+          <id>github</id>
+          <name>GitHub Packages</name>
+          <url>https://maven.pkg.github.com/boris-ning-usds/phinvad-client</url>
         </repository>
     </distributionManagement>
 
