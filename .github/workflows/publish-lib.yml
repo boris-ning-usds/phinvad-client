@@ -1,0 +1,31 @@
+curl https://phinvads.cdc.gov/vads/DownloadHotTopicDetailFile.action?filename=5B9E6712-86AD-E011-A440-0050568D00F8 -o DeveloperToolkit.zip
+unzip DeveloperToolkit.zip
+
+name: Build Java Jar on Tag Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['develop', 'main']
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3.5.0
+
+    - name: Download Phinvad Client Developer Toolkit
+      run: |
+        curl https://phinvads.cdc.gov/vads/DownloadHotTopicDetailFile.action?filename=5B9E6712-86AD-E011-A440-0050568D00F8 -o DeveloperToolkit.zip
+    
+    - name: Unzip the Developer Toolkit
+      run: |
+        unzip DeveloperToolkit.zip
+      
+    - name: Publish Package - phinvad-client
+      run: mvn deploy:deploy-file -Dfile=./java/vocabServiceClient.jar 
+        -DrepositoryId=github 
+        -Durl=https://maven.pkg.github.com/boris-ning-usds/phinvad-client 
+      env:
+        GITHUB_TOKEN: ${{ secrets.JAVA_TOKEN }}
