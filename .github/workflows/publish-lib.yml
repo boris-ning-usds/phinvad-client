@@ -23,6 +23,9 @@ jobs:
         run: |
           unzip DeveloperToolkit.zip
 
+      - name: Fill in the settings.xml file
+        uses: s4u/maven-settings-action@v2.8.0
+
       - name: Publish Package - phinvad-client
         run: mvn deploy:deploy-file -Dfile=./java/vocabServiceClient.jar
           -DpomFile=./pom.xml
