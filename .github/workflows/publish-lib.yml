@@ -22,6 +22,7 @@ jobs:
 
       - name: Publish Package - phinvad-client
         run: mvn deploy:deploy-file -Dfile=./java/vocabServiceClient.jar
+          -DpomFile=./pom.xml
           -DrepositoryId=github
           -Durl=https://maven.pkg.github.com/boris-ning-usds/phinvad-client
         env:
