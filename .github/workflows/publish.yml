@@ -31,4 +31,5 @@ jobs:
           -DpomFile=./pom.xml
           -DrepositoryId=github
           -Durl=https://maven.pkg.github.com/boris-ning-usds/phinvad-client
-          -Dtoken=${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
